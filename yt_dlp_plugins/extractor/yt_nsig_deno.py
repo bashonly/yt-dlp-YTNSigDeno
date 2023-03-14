@@ -3,7 +3,6 @@ import tempfile
 import contextlib
 import subprocess
 
-
 from yt_dlp.utils import (
     ExtractorError,
     check_executable,
@@ -13,7 +12,7 @@ from yt_dlp.utils import (
 from yt_dlp.extractor.youtube import YoutubeIE
 
 
-class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSIG_DENO'):
+class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSigDeno'):
     _TEMP_FILES = []
     DENO_INSTALL_HINT = 'Please download it from https://deno.land/'
 
@@ -24,8 +23,19 @@ class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSIG_DENO'):
 
     def _extract_n_function_from_code(self, jsi, func_code):
         args, func_body = func_code
+        func = jsi.extract_function_from_code(*func_code)
 
         def extract_nsig(s):
+            if not self._configuration_arg('bypass_native_jsi'):
+                try:
+                    ret = func([s])
+                except Exception:
+                    ret = None
+                if ret and not ret.startswith('enhanced_except_'):
+                    return ret
+                self.report_warning('Native JSInterpreter failed to decrypt, trying with Deno')
+                ret = None
+
             exe = check_executable('deno', ['--version'])
             if not exe:
                 self.report_warning(f'Deno not found, {self.DENO_INSTALL_HINT}')

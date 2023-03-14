@@ -2,9 +2,17 @@ A [yt-dlp](https://github.com/yt-dlp/yt-dlp) extractor [plugin](https://github.c
 
 ---
 
-Deno is running in JIT-less V8 mode by default (more security at performance cost - see https://v8.dev/blog/jitless, also [this](https://gist.github.com/sakura4919/df97467b169579e00f30d9049b15ab67?permalink_comment_id=4297519#gistcomment-4297519))
+The YouTube extractor first attempts with the native JSInterpreter before falling back to Deno
 
-Pass `--extractor-args youtube:deno-no-jitless` to disable it.
+Pass `--extractor-args "youtube:bypass_native_jsi"` to use Deno by default
+
+---
+
+Deno is running in JIT-less V8 mode by default (more security at performance cost - see https://v8.dev/blog/jitless, also [this](https://gist.github.com/sakura4919/df97467b169579e00f30d9049b15ab67?permalink_comment_id=4297519#gistcomment-4297519))  
+
+Pass `--extractor-args "youtube:deno_no_jitless"` to disable it.
+
+*(pass `--extractor-args "youtube:bypass_native_jsi;deno_no_jitless"` to enable both extractor arguments)*
 
 
 ## Installation
