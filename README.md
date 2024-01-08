@@ -8,7 +8,7 @@ Pass `--extractor-args "youtube:bypass_native_jsi"` to use Deno by default
 
 ---
 
-Deno is running in JIT-less V8 mode by default (more security at performance cost - see https://v8.dev/blog/jitless, also [this](https://gist.github.com/sakura4919/df97467b169579e00f30d9049b15ab67?permalink_comment_id=4297519#gistcomment-4297519))
+Deno is running in JIT-less V8 mode by default (more security at performance cost - see https://v8.dev/blog/jitless)
 
 Pass `--extractor-args "youtube:deno_no_jitless"` to disable it.
 
@@ -23,7 +23,7 @@ Requires yt-dlp `2023.01.02` or above.
 
 You can install this package with pip:
 ```
-python3 -m pip install -U https://github.com/sakura4919/yt-dlp-YTNSigDeno/archive/main.zip
+python3 -m pip install -U https://github.com/bashonly/yt-dlp-YTNSigDeno/archive/master.zip
 ```
 
 See [yt-dlp installing plugins](https://github.com/yt-dlp/yt-dlp#installing-plugins) for the many other ways this plugin package can be installed.
