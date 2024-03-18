@@ -1,15 +1,15 @@
-import os
-import tempfile
 import contextlib
+import os
 import subprocess
+import tempfile
 
+from yt_dlp.extractor.youtube import YoutubeIE
 from yt_dlp.utils import (
     ExtractorError,
+    Popen,
     check_executable,
     shell_quote,
-    Popen,
 )
-from yt_dlp.extractor.youtube import YoutubeIE
 
 
 class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSigDeno'):
