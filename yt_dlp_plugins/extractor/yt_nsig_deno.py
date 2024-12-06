@@ -31,7 +31,7 @@ class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSigDeno'):
                     ret = func([s])
                 except Exception:
                     ret = None
-                if ret and not ret.startswith('enhanced_except_'):
+                if ret and not (ret.startswith('enhanced_except_') or ret.endswith(s)):
                     return ret
                 self.report_warning('Native JSInterpreter failed to decrypt, trying with Deno')
                 ret = None
@@ -65,7 +65,7 @@ class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSigDeno'):
 
             ret = stdout.strip()
 
-            if ret.startswith('enhanced_except_'):
+            if ret.startswith('enhanced_except_') or ret.endswith(s):
                 raise Exception('Signature function returned an exception')
 
             return ret
