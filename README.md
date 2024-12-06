@@ -19,7 +19,7 @@ Pass `--extractor-args "youtube:deno_no_jitless"` to disable it.
 
 ## Installation
 
-Requires yt-dlp `2023.01.02` or above.
+Requires yt-dlp `2024.12.06` or above.
 
 You can download the wheel of the [latest release](https://github.com/bashonly/yt-dlp-YTNSigDeno/releases/latest) and place the `.whl` file in one of [yt-dlp's plugin paths](https://github.com/yt-dlp/yt-dlp#installing-plugins).
 
