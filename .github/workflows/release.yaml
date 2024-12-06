@@ -54,6 +54,6 @@ jobs:
         grep -Poz "(?s)### ${version//./\\.}\n\n\K.+?(?=(\n### ))" ./Changelog.md | head -n -1 > ./RELEASE_NOTES
         gh release create "${version}" \
           --latest \
-          --title "${name} ${version}" \
+          --title "${version}" \
           --notes-file ./RELEASE_NOTES \
           dist/*.whl
