@@ -1,5 +1,16 @@
 # Changelog
 
+### 2025.07.05
+
+#### Plugin changes
+- [Support new global nsig function fixup](https://github.com/bashonly/yt-dlp-YTNSigDeno/commit/7ea4a7a9e684546bcea13e520f3142157c4d7236) by [bashonly](https://github.com/bashonly)
+
+#### Misc. changes
+- **build**
+    - [only use version for release titles](https://github.com/bashonly/yt-dlp-YTNSigDeno/commit/644eef7346cd748903160792dbdec24b1fdd9d36) by [bashonly](https://github.com/bashonly)
+- **docs**
+    - [bump minimum required yt-dlp version](https://github.com/bashonly/yt-dlp-YTNSigDeno/commit/5f6978e794d622a84b2d788dc8107e97e252cbc9) by [bashonly](https://github.com/bashonly)
+
 ### 2024.12.06
 
 #### Plugin changes
