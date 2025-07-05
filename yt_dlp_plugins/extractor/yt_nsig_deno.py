@@ -2,8 +2,10 @@ import contextlib
 import os
 import subprocess
 import tempfile
+import traceback
 
 from yt_dlp.extractor.youtube import YoutubeIE
+from yt_dlp.jsinterp import JSInterpreter
 from yt_dlp.utils import (
     ExtractorError,
     Popen,
@@ -15,6 +17,7 @@ from yt_dlp.utils import (
 class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSigDeno'):
     _TEMP_FILES = []
     DENO_INSTALL_HINT = 'Please download it from https://deno.land/'
+    _DUMMY_STRING = 'dlp_wins'
 
     def __del__(self):
         for name in self._TEMP_FILES:
@@ -26,15 +29,27 @@ class Youtube_NsigDenoIE(YoutubeIE, plugin_name='NSigDeno'):
         func = jsi.extract_function_from_code(*func_code)
 
         def extract_nsig(s):
-            if not self._configuration_arg('bypass_native_jsi'):
+            force_native = s == self._DUMMY_STRING
+
+            if force_native or not self._configuration_arg('bypass_native_jsi'):
+                ret = None
+
                 try:
                     ret = func([s])
-                except Exception:
-                    ret = None
+                except JSInterpreter.Exception:
+                    if force_native:
+                        raise
+                except Exception as e:
+                    if force_native:
+                        raise JSInterpreter.Exception(traceback.format_exc(), cause=e)
+
                 if ret and not (ret.startswith('enhanced_except_') or ret.endswith(s)):
                     return ret
+
+                if force_native:
+                    raise JSInterpreter.Exception('Signature function returned an exception')
+
                 self.report_warning('Native JSInterpreter failed to decrypt, trying with Deno')
-                ret = None
 
             exe = check_executable('deno', ['--version'])
             if not exe:
