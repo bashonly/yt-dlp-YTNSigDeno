@@ -1,5 +1,9 @@
 # Changelog
 
+### 2025.11.11
+
+- End of life. Please uninstall this plugin
+
 ### 2025.07.05
 
 #### Plugin changes

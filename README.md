@@ -1,3 +1,12 @@
+> [!CAUTION]
+> ### This plugin is obsolete as of yt-dlp version `2025.11.11`.
+>
+> **The plugin is completely unrelated to yt-dlp's built-in Deno support.**
+>
+> **Please uninstall the plugin**, and refer to https://github.com/yt-dlp/yt-dlp/wiki/EJS for guidance on yt-dlp's native Deno support.
+
+---
+
 A [yt-dlp](https://github.com/yt-dlp/yt-dlp) extractor [plugin](https://github.com/yt-dlp/yt-dlp#plugins) to decrypt YouTube nsig using [Deno](https://deno.land)
 
 ---
