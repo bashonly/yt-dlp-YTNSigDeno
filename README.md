@@ -1,5 +1,5 @@
 > [!CAUTION]
-> ### This plugin is obsolete as of yt-dlp version `2025.11.11`.
+> ### This plugin is obsolete as of yt-dlp version `2025.11.12`.
 >
 > **The plugin is completely unrelated to yt-dlp's built-in Deno support.**
 >
